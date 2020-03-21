@@ -1,11 +1,6 @@
 <template>
   <div>
-    <v-form ref="createForm" @submit.prevent>
-      <v-row>
-        <v-col cols="12" sm="6">
-          <v-text-field v-model.number="id" label="Employee Id" single-line required :rules="[genericRules.required, genericRules.integerCheck]"></v-text-field>
-        </v-col>
-      </v-row>
+    <v-form ref="createForm" @submit.prevent >
       <v-row>
         <v-col cols="12" sm="6">
           <v-text-field v-model="name" label="Employee Name" required :rules="[genericRules.required]" single-line></v-text-field>
@@ -13,7 +8,7 @@
       </v-row>
       <v-row>
         <v-col cols="12" sm="6">
-          <v-text-field v-model.number="salary" label="Employee Salery" single-line required :rules="[genericRules.required, genericRules.integerCheck]"></v-text-field>
+          <v-text-field v-model.number="salary" label="Employee Salary" single-line required :rules="[genericRules.required, genericRules.integerCheck]"></v-text-field>
         </v-col>
       </v-row>
       <v-row>
@@ -36,7 +31,6 @@ export default {
     age: null,
     genericRules: {
       required: t => t && t.length !== 0 || 'This Field is required',
-      minRule: t => t && t.length >= 3 && t.length <= 10 || 'Minimum 3 letters and Max of 10 length',
       integerCheck: t => t && Number.isInteger(t) || 'Only Integer'
     }
   }),
@@ -45,7 +39,6 @@ export default {
     submit() {
       if (this.$refs.createForm.validate()) {
         this.$store.dispatch('employees/createEmployee', {
-          id: this.id,
           name: this.name,
           salary: this.salary,
           age: this.age,

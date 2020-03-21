@@ -13,7 +13,7 @@ export const state = () => ({
     },
   
     fetchEmployees ({commit}) {
-        this.$axios.get('http://dummy.restapiexample.com/api/v1/employees')
+        this.$axios.get('http://dummy.restapiexample.com/api/v1/employee/1')
         .then(res => {
             commit('setUsers', res.data.data)
         })
